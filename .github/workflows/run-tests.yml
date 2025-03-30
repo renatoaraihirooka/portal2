@@ -1,0 +1,21 @@
+name: Run Maven Tests
+
+on:
+  repository_dispatch:
+    types: [run-maven-tests]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout código-fonte
+        uses: actions/checkout@v4
+
+      - name: Configurar Java e Maven
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Executar testes Maven
+        run: mvn test
