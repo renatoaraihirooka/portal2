@@ -19,5 +19,5 @@ jobs:
 
       - name: Executar testes Maven
         env:
-          TOKEN: ${{ secrets.TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
         run: mvn test
