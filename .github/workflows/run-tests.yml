@@ -18,4 +18,6 @@ jobs:
           java-version: '17'
 
       - name: Executar testes Maven
+        env:
+          TOKEN: ${{ secrets.TOKEN }}
         run: mvn test
