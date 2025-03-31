@@ -26,4 +26,9 @@ jobs:
       - name: Executar testes Maven
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
-        run: mvn test
+        run: |
+          curl -X POST \
+            -H "Authorization: Bearer $GITHUB_TOKEN" \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/repos/${{ github.repository }}/dispatches \
+            -d '{"event_type": "run-maven-tests"}'
