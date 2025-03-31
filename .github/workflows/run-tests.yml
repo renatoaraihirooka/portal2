@@ -17,7 +17,13 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
+      - name: Set up environment
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+        run: |
+          echo "Token configurado com sucesso!"
+
       - name: Executar testes Maven
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
-        run: ${{ secrets.TOKEN }} mvn test
+        run: mvn test
