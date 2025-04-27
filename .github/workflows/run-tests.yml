@@ -15,4 +15,4 @@ jobs:
           ref: ${{ github.event.client_payload.branch }} # Usa a branch enviada no payload
 
       - name: Run Maven Tests
-        run: mvn clean test -DtestExecutionKey=${{ github.event.client_payload.testExecutionKey }}
+        run: mvn clean test -DtestExecutionKey=${{ github.event.client_payload.testExecutionKey }} -Dusuario=${{ github.event.client_payload.usuario }}
