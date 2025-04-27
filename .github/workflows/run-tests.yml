@@ -35,5 +35,5 @@ jobs:
       - name: Executar testes Maven
         run: mvn test -B
 
-      - name: Print Test Execution Key
-        run: echo "Test Execution Key: ${{ github.event.client_payload.testExecutionKey }}"
+
+
