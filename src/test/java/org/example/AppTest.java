@@ -38,7 +38,7 @@ public class AppTest
     {
 
         assertTrue( true );
-        System.out.println("TESTE OKKKKKKKKKKKKKKKKKKKKKK23");
+        System.out.println("TESTE OKKKKKKKKKKKKKKKKKKKKKK25");
 
         String testExecutionKey = System.getProperty("testExecutionKey");
         String usuario = System.getProperty("usuario");
