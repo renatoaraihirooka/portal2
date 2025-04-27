@@ -10,8 +10,6 @@ jobs:
     steps:
       - name: Checkout código-fonte
         uses: actions/checkout@v4
-        with:
-          ref: main # Especifica a branch
 
       - name: Configurar Java e Maven
         uses: actions/setup-java@v3
