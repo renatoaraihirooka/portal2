@@ -39,5 +39,7 @@ public class AppTest
 
         assertTrue( true );
         System.out.println("TESTE OKKKKKKKKKKKKKKKKKKKKKK23");
+        String testExecutionKey = System.getProperty("testExecutionKey");
+        System.out.println("Test Execution Key: " + testExecutionKey);
     }
 }

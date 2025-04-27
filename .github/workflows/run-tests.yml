@@ -32,5 +32,8 @@ jobs:
         run: |
           echo "Token configurado com sucesso!"
 
-      - name: Executar testes Maven
-        run: mvn test -B
+      - name: Print Test Execution Key
+        run: echo "Test Execution Key: ${{ github.event.client_payload.testExecutionKey }}"
+
+      - name: Run Maven Tests
+        run: mvn clean test -DtestExecutionKey=${{ github.event.client_payload.testExecutionKey }}
