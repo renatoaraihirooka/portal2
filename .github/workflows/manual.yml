@@ -30,5 +30,11 @@ jobs:
     # Runs a single command using the runners shell
     - name: Send greeting
       run: echo "Hello ${{ inputs.name }}"
-    - name: Salvar resultados
-      run: cat target/surefire-reports/*.txt > resultado.txt
+        - name: Salvar resultados
+          run: cat target/surefire-reports/*.txt > resultado.txt
+        - name: Upload do resultado
+          uses: actions/upload-artifact@v3
+          with:
+            name: resultado_teste
+            path: resultado.txt
+
