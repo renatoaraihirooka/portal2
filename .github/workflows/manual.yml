@@ -33,8 +33,8 @@ jobs:
       - name: Enviar resultado para Confluence
         env:
           CONFLUENCE_URL: "https://renatoarai.atlassian.net/wiki/rest/api/content/131084"
-          CONFLUENCE_USER: "seu_email"
-          CONFLUENCE_API_TOKEN: "seu_token"
+          CONFLUENCE_USER: "renatoarai@gmail.com"
+          CONFLUENCE_API_TOKEN: "ATCTT3xFfGN04UD5ep6GMUgOv4jC4unk_-ghrMRZRbF8uCSLIzxgQJ-Zzf2_koTpYFUmDip7ha4V4tyc_9lvCMAebWxrF83GncGE0qTtxgr9hNZd8Q3eQTuBrHM7nQE_Nj_XGYCpACN_cymxJIR5EGPFTkFOOaiCx-rsqq0c24rJb1sVZVYk6zU=41EA33BE"
         run: |
           echo "Enviando resultado para Confluence..."
           curl -u "$CONFLUENCE_USER:$CONFLUENCE_API_TOKEN" -X PUT "$CONFLUENCE_URL" \
