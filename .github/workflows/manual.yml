@@ -32,7 +32,7 @@ jobs:
 
       - name: Enviar resultado para Confluence
         env:
-          CONFLUENCE_URL: "https://renatoarai.atlassian.net/wiki/rest/api/content/131084"
+          CONFLUENCE_URL: "https://renatoarai.atlassian.net/wiki/spaces/~7120201ed0ba27ef7a42468acc4373be8b09e4/pages/131084/pagina01"
           CONFLUENCE_USER: "renatoarai@gmail.com"
           CONFLUENCE_API_TOKEN: "ATCTT3xFfGN04UD5ep6GMUgOv4jC4unk_-ghrMRZRbF8uCSLIzxgQJ-Zzf2_koTpYFUmDip7ha4V4tyc_9lvCMAebWxrF83GncGE0qTtxgr9hNZd8Q3eQTuBrHM7nQE_Nj_XGYCpACN_cymxJIR5EGPFTkFOOaiCx-rsqq0c24rJb1sVZVYk6zU=41EA33BE"
         run: |
