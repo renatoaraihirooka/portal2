@@ -1,0 +1,26 @@
+name: Manual workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: 'Person to greet'
+        default: 'World'
+        required: true
+        type: string
+
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Send greeting
+      run: echo "Hello ${{ inputs.name }}"
+      
+    - name: Checkout code
+      uses: actions/checkout@v3
+      with:
+        ref: ${{ github.event.client_payload.branch }} # Usa a branch enviada no payload
+
+    - name: Run Maven Tests
+      run: mvn clean test -DtestExecutionKey=${{ github.event.client_payload.testExecutionKey }}
