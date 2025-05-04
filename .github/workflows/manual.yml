@@ -1,40 +1,42 @@
-name: Manual workflow
+name: Testes Automatizados + Confluence
 
 on:
-  workflow_dispatch:
-    inputs:
-      name:
-        description: 'Person to greet'
-        default: 'World'
-        required: true
-        type: string
+  workflow_dispatch: # Permite iniciar manualmente via GitHub UI
 
 jobs:
-  greet:
+  run-tests:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout do código
         uses: actions/checkout@v3
-
-      - name: Enviar saudação
-        run: echo "Hello ${{ inputs.name }}"
 
       - name: Configurar Java
         uses: actions/setup-java@v3
         with:
           java-version: '17'
 
-      - name: Instalar dependências
+      - name: Instalar dependências Maven
         run: mvn install
 
-      - name: Executar testes
-        run: mvn test || true # Garante que o workflow não falhe se houver erro nos testes
+      - name: Executar testes Maven
+        run: mvn test || true # Continua mesmo que os testes falhem
 
-      - name: Salvar resultado do teste
+      - name: Capturar resultado dos testes
         run: cat target/surefire-reports/*.txt > resultado.txt || echo "Nenhum resultado encontrado" > resultado.txt
 
-      - name: Upload do resultado
+      - name: Upload do resultado dos testes
         uses: actions/upload-artifact@v3
         with:
           name: resultado_teste
           path: resultado.txt
+
+      - name: Enviar resultado para Confluence
+        env:
+          CONFLUENCE_URL: "https://renatoarai.atlassian.net/wiki/rest/api/content/131084"
+          CONFLUENCE_USER: "seu_email"
+          CONFLUENCE_API_TOKEN: "seu_token"
+        run: |
+          echo "Enviando resultado para Confluence..."
+          curl -u "$CONFLUENCE_USER:$CONFLUENCE_API_TOKEN" -X PUT "$CONFLUENCE_URL" \
+            -H "Content-Type: application/json" \
+            --data "{\"type\":\"page\",\"title\":\"Resultados do Teste\",\"body\":{\"storage\":{\"value\":\"<pre>$(cat resultado.txt)</pre>\",\"representation\":\"storage\"}}}"
