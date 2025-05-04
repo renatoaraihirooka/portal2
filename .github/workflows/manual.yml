@@ -32,9 +32,11 @@ jobs:
 
       - name: Enviar resultado para Confluence
         env:
+
           CONFLUENCE_URL: "https://renatoarai.atlassian.net/wiki/rest/api/content/131084"
           CONFLUENCE_USER: "renatoarai@gmail.com"
           CONFLUENCE_API_TOKEN: ""
+
         run: |
           echo "Enviando resultado para Confluence..."
           curl -u "$CONFLUENCE_USER:$CONFLUENCE_API_TOKEN" -X PUT "$CONFLUENCE_URL" \
